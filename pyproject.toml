@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "molopt"
+version = "0.1.0"
+description = "Ask–tell black-box optimization. Core is NumPy and SciPy; Bayesian optimization is an optional BoTorch extra."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "numpy>=1.24",
+    "scipy>=1.11",
+]
+
+[project.optional-dependencies]
+bo = [
+    "torch>=2.2",
+    "botorch>=0.13",
+]
+dev = [
+    "pytest>=8",
+]
+all = [
+    "torch>=2.2",
+    "botorch>=0.13",
+    "pytest>=8",
+]
+
+[tool.setuptools.packages.find]
+include = ["molopt*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
